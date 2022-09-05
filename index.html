@@ -11,6 +11,13 @@
     <meta name="keywords" content="regex, regular expression, pcre, regular, expression, substring"/>
     <meta name="author" content="Olaf Neumann" />
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -49,8 +56,15 @@
                     <h5>Paste a text sample.</h5>
                     <a id="rg_button_show_help" class="btn btn-sm rg-no-focus" title="Show help">&#10068;</a>
                 </div>
-                <input type="text" id="rg_raw_input_text" class="form-control rg-code" aria-label="Example text"
-                    aria-describedby="rg_raw_text_input_help" placeholder="Text here..." autofocus="autofocus">
+                <input type="text" maxlength="1000" id="rg_raw_input_text" class="form-control rg-code"
+                    aria-label="Example text" aria-describedby="rg_raw_text_input_help" placeholder="Text here..."
+                    autofocus="autofocus" value="">
+                <div id="rg_raw_input_message_shorten" class="alert alert-danger p-0 mt-1 position-absolute"
+                    role="alert">
+                    <small class="p-2 d-block">We have shortened the input to <span
+                            id="rg_raw_input_message_shorten_number">1000</span> characters to speed up
+                        processing.</small>
+                </div>
                 <small id="rg_raw_text_input_help" class="form-text text-muted">Give us an example of the text you want
                     to
                     match using your <em>regex</em>. We will provide you with some ideas how to build a regular
@@ -87,7 +101,8 @@
                         <div id="rg_result_display"></div>
                     </div>
                 </div>
-                <small class="form-text text-muted">Hover the generated regular expression to see more information.</small>
+                <small class="form-text text-muted">Hover the generated regular expression to see more
+                    information.</small>
                 <div class="row mt-3">
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2">
                         <button class="btn btn-primary" id="rg_button_copy">Copy regex</button>
@@ -139,6 +154,10 @@
                 </div>
                 <div class="accordion rg-code-accordion" id="rg_language_accordion">
                 </div>
+                <small>Please note that these code samples are automatically generated. They are not guaranteed to work.
+                    If you find a syntax error, please submit a <a
+                        href="https://github.com/noxone/regex-generator/issues/new?assignees=&labels=&template=bug_report.md&title=Syntax%20Error">bug
+                        report</a>.</small>
                 <div class="card mt-2 pt-3">
                     <form>
                         <div class="form-group">
@@ -153,7 +172,7 @@
                                     By default, all major regex engines match in case-sensitive mode. If you want
                                     patterns such as <span class="border rg-code p-1 bg-white">Name: [a-z]+</span>
                                     to match in
-                                    case-insensitive fashion, we need to turn that feature on.&NonBreakingSpace;</nbsp>
+                                    case-insensitive fashion, we need to turn that feature on.&NonBreakingSpace;
                                     <sup><a href="https://www.rexegg.com/regex-modifiers.html#i"
                                             target="_blank">*</a></sup>
                                 </small>
@@ -212,7 +231,8 @@
                 <p>To share the current page content and settings, use the following link:</p>
                 <div class="rounded border p-1">
                     <div class="rg-match-container">
-                        <button class="btn btn-primary btn-sm float-right m-1" id="rg_button_copy_share_link" title="Copy link to share">&#x1F4CB</button>
+                        <button class="btn btn-primary btn-sm float-right m-1" id="rg_button_copy_share_link"
+                            title="Copy link to share">&#x1F4CB</button>
                         <div id="rg_result_link" class="rg-share-link m-1"></div>
                     </div>
                 </div>
@@ -265,7 +285,7 @@
 
             <!-- Copyright -->
             <div class="text-center pt-3">
-                &copy; 2020-2021 Copyright <a href="https://github.com/noxone/" target="_blank">Olaf Neumann</a>
+                &copy; 2020-2022 Copyright <a href="https://github.com/noxone/" target="_blank">Olaf Neumann</a>
             </div>
         </footer>
     </div>
